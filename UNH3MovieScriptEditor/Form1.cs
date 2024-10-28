@@ -68,7 +68,7 @@ namespace UNH3MovieScriptEditor
                     int cByte = ms.ReadByte();
                     if(cByte == 0)
                     {
-                        texts.Add(Encoding.GetEncoding("ISO-8859-1").GetString(chars.ToArray()));
+                        texts.Add(Encoding.UTF8.GetString(chars.ToArray()));
                         break;
                     }
                     chars.Add((byte)cByte);
@@ -130,7 +130,7 @@ namespace UNH3MovieScriptEditor
             }
             foreach (string text in texts)
             {
-                byte[] textBytes = Encoding.GetEncoding("ISO-8859-1").GetBytes(text);
+                byte[] textBytes = Encoding.UTF8.GetBytes(text);
                 ms.Write(textBytes, 0, textBytes.Length);
                 ms.WriteByte(0);
             }
